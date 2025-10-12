@@ -1,0 +1,4 @@
+GET http://localhost:7177/health/greet
+Accept: application/json
+
+###
