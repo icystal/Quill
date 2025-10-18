@@ -18,11 +18,11 @@ public class ContextHolder {
         TTL.remove();
     }
 
-    public static Long getBookId() {
+    public static Long getUserId() {
         RequestContext requestContext = TTL.get();
         if (requestContext == null) {
             return null;
         }
-        return requestContext.getBookId();
+        return requestContext.getUserId();
     }
 }

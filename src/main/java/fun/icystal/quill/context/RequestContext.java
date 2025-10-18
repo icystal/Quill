@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class RequestContext {
 
-    private Long bookId;
+    private Long userId;
 
 }

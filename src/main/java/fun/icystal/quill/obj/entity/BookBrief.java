@@ -11,6 +11,11 @@ public class BookBrief {
     private String genre;
 
     /**
+     * 主角身份
+     */
+    private String character;
+
+    /**
      * 一句话概要
      */
     private String brief;

@@ -1,38 +1,42 @@
 package fun.icystal.quill.controller;
 
-import com.google.common.collect.Lists;
-import fun.icystal.quill.constant.BookStatus;
-import fun.icystal.quill.context.ContextHolder;
-import fun.icystal.quill.context.RequestContext;
+import fun.icystal.quill.constant.QuillMode;
+import fun.icystal.quill.fundamental.GenerateHandler;
 import fun.icystal.quill.obj.entity.Book;
-import fun.icystal.quill.obj.response.BookNode;
-import fun.icystal.quill.obj.response.BookVO;
 import fun.icystal.quill.obj.wrapper.QuillResponse;
 import fun.icystal.quill.service.BookService;
-import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/book")
 public class BookController {
 
-    @Resource
-    private BookService bookService;
+    private final BookService bookService;
 
-    @PostMapping("/create")
-    public QuillResponse<BookVO> create() {
+    private final Map<String, GenerateHandler> generateHandlers;
 
-        Book book = bookService.createBook();
+    public BookController(BookService bookService, List<GenerateHandler> generateHandlers) {
+        this.bookService = bookService;
+        this.generateHandlers = new HashMap<>();
+        for (GenerateHandler generateHandler : generateHandlers) {
+            this.generateHandlers.put(generateHandler.step().getCode(), generateHandler);
+        }
+    }
 
-        RequestContext ctx = ContextHolder.get();
-        ctx.setBookId(book.getId());
 
-        BookVO vo = new BookVO();
-        vo.setBookId(book.getId());
-        vo.setCurrentNode(new BookNode(BookStatus.START));
-        vo.setNextNode(Lists.newArrayList(new BookNode(BookStatus.BRIEF)));
+    @PostMapping("/quill/{code}/{mode}")
+    public QuillResponse<?> quill(@RequestBody(required = false) Book book, @PathVariable String code, @PathVariable Integer mode) {
+        if (Objects.equals(mode, QuillMode.GENERATE.getMode())) {
+            book = generateHandlers.get(code).handle(book);
+        }
 
-        return QuillResponse.success(vo);
+        book = bookService.save(book);
+        return QuillResponse.success(book);
     }
 
 }

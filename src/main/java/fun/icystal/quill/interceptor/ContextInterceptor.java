@@ -15,15 +15,15 @@ import util.JsonUtil;
 @Component
 public class ContextInterceptor implements HandlerInterceptor {
 
-    private static final String HEADER_USER_ID = "Q-BOOK-ID";
+    private static final String HEADER_USER_ID = "Q-USER-ID";
 
     @Override
     public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
         RequestContext ctx = new RequestContext();
 
-        String bookId = request.getHeader(HEADER_USER_ID);
-        if (StringUtils.isNotBlank(bookId) && StringUtils.isBlank(bookId)) {
-            ctx.setBookId(Long.parseLong(bookId));
+        String userId = request.getHeader(HEADER_USER_ID);
+        if (StringUtils.isNotBlank(userId) && StringUtils.isBlank(userId)) {
+            ctx.setUserId(Long.parseLong(userId));
         }
 
         ContextHolder.set(ctx);

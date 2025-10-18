@@ -1,4 +1,18 @@
-POST http://localhost:7177/book/create
+POST http://localhost:7177/book/quill/brief/0
+Content-Type: application/json
+
+{
+  "id": 767402418827689984,
+  "bookDetail": {
+    "brief": {
+      "genre": "武侠",
+      "character": ""
+    }
+  }
+}
+
+###
+POST http://localhost:7177/book/quill/start/0
 Content-Type: application/json
 
 

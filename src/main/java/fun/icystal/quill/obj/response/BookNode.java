@@ -1,6 +1,5 @@
 package fun.icystal.quill.obj.response;
 
-import fun.icystal.quill.constant.BookStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,12 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class BookNode {
 
-    private Integer status;
+    private Integer code;
 
     private String desc;
 
-    public BookNode(BookStatus bookStatus) {
-        status = bookStatus.getCode();
-        desc = bookStatus.getDesc();
-    }
 }

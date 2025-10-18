@@ -5,13 +5,15 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum BookStatus {
+public enum BookStep {
 
-    START(0, "初始化"),
+    START( "start", 0, "初始化"),
 
-    BRIEF(1, "一句话概要");
+    BRIEF( "brief",1, "概要");
 
-    private final Integer code;
+    private final String code;
+
+    private final Integer sort;
 
     private final String desc;
 
