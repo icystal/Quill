@@ -7,4 +7,6 @@ public class BookDetail {
 
     private BookBrief brief;
 
+    private BookStructure structure;
+
 }

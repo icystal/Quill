@@ -20,8 +20,6 @@ public class BriefService implements GenerateHandler {
 
     private final ChatClient chatClient;
 
-
-
     public BriefService(ChatClient.Builder builder) {
         this.chatClient = builder.build();
     }

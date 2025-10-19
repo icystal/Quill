@@ -31,4 +31,11 @@ public class BookService {
         return book;
     }
 
+    public Book findById(Long bookId) {
+        if (bookId == null) {
+            return null;
+        }
+        return bookMapper.select(bookId);
+    }
+
 }

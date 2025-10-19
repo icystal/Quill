@@ -9,7 +9,10 @@ public enum BookStep {
 
     START( "start", 0, "初始化"),
 
-    BRIEF( "brief",1, "概要");
+    BRIEF( "brief",1, "概要"),
+
+    STRUCTURE( "structure",2, "结构"),
+    ;
 
     private final String code;
 

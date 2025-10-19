@@ -39,4 +39,10 @@ public class BookController {
         return QuillResponse.success(book);
     }
 
+    @GetMapping("/query/{bookId}")
+    public QuillResponse<?> query(@PathVariable Long bookId) {
+        Book book = bookService.findById(bookId);
+        return QuillResponse.success(book);
+    }
+
 }
