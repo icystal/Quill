@@ -12,6 +12,8 @@ public enum BookStep {
     BRIEF( "brief",1, "概要"),
 
     STRUCTURE( "structure",2, "结构"),
+
+    CHARACTER( "character",3, "人物"),
     ;
 
     private final String code;

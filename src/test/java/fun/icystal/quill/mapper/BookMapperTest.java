@@ -24,7 +24,6 @@ public class BookMapperTest {
     public void insert() {
         Book book = new Book();
         book.setId(1L);
-        book.setStatus(2);
         book.setBookDetail(new BookDetail());
 
         int insert = bookMapper.insert(book);
@@ -38,7 +37,6 @@ public class BookMapperTest {
         Book book = new Book();
         book.setId(1L);
 
-        book.setStatus(3);
         BookBrief brief = new BookBrief();
         brief.setGenre("爱情悬疑");
         if (book.getBookDetail() == null) {

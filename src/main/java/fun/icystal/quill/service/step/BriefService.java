@@ -3,7 +3,7 @@ package fun.icystal.quill.service.step;
 import com.google.common.collect.Lists;
 import fun.icystal.quill.constant.BookStep;
 import fun.icystal.quill.constant.ResponseCode;
-import fun.icystal.quill.exception.StepException;
+import fun.icystal.quill.exception.QuillException;
 import fun.icystal.quill.factory.PromptFactory;
 import fun.icystal.quill.fundamental.GenerateHandler;
 import fun.icystal.quill.obj.entity.Book;
@@ -29,7 +29,7 @@ public class BriefService implements GenerateHandler {
     @Override
     public Book handle(Book book) {
         if (book == null) {
-            throw new StepException(ResponseCode.STEP_EXCEPTION, null);
+            throw new QuillException(ResponseCode.STEP_EXCEPTION, null);
         }
         if (book.getBookDetail() == null) {
             book.setBookDetail(new BookDetail());

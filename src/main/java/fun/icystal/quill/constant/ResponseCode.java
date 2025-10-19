@@ -11,6 +11,8 @@ public enum ResponseCode {
 
     STEP_EXCEPTION("1", "请完成前置步骤"),
 
+    MODEL_RESPONSE_EXCEPTION("2", "模型返回异常"),
+
     UNKNOWN("-1", "未知异常");
 
     private final String code;

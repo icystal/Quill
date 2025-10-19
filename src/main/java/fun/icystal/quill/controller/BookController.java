@@ -35,7 +35,9 @@ public class BookController {
             book = generateHandlers.get(code).handle(book);
         }
 
-        book = bookService.save(book);
+        if (book != null && book.getBookDetail() != null) {
+            book = bookService.save(book);
+        }
         return QuillResponse.success(book);
     }
 

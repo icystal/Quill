@@ -1,6 +1,7 @@
 package fun.icystal.quill.factory;
 
 import fun.icystal.quill.obj.entity.BookBrief;
+import fun.icystal.quill.obj.entity.BookStructure;
 import org.apache.commons.lang3.StringUtils;
 
 public class PromptFactory {
@@ -39,7 +40,7 @@ public class PromptFactory {
                 """
                         提示:
                          - 灾难性事件是打破平静故事, 为主角设下难题, 刺激主角做出新决定, 为故事发展提供新方向的事件. 它可以是一个现实的巨大变故, 也可以是人物心理的激烈挣扎.
-                         - 重点关注灾难性事件的描写, 以及之后主角所做的决定.
+                         - 重点关注灾难性事件的描写, 以及之后主角所做的决定, 无须为角色命名.
                          - 无须考虑如何解决主角面临的难题, 只关注故事发展的大方向即可.
                          - 无须描写场景细节, 但小说四个部分之间应该有逻辑关联.
                         """;
@@ -49,5 +50,27 @@ public class PromptFactory {
         return "故事概要: " + brief.getBrief();
     }
 
+    public static String characterSystemPrompt() {
+        return "你是一个擅长刻画人物形象的小说家. 你正在创作一本新作, 需要根据小说的三幕式结构, 完成小说中3~5名主要角色的人物简介.\n" +
+                """
+                        每个人物的简介包括:
+                         a. 姓名
+                         b. 性别
+                         c. 年龄
+                         d. 身份
+                         e. 目标: 具体、可量化的短期或中期追求，通常有明确的计划和行动步骤\t人物的目标通常是为了实现抱负所作出的计划
+                         f. 抱负: 宏观、抽象的长远愿景，体现个人对自我实现的深层渴望\t人物的抱负的精神内核是价值观
+                         g: 价值观: 人物对「什么值得我坚持」这一问题的深层信念 需要填写2~4个价值观元素
+                         h: 人物概括: 简短地描述人物形象、在故事中人物的行动、他的行动造成的后果, 以及他的结局
+                        """;
+    }
+
+    public static String characterUserPrompt(BookStructure structure) {
+        return "小说结构\n - 故事背景: " + structure.getBackground() +
+                "\n - 开端: " + structure.getFirstPart() +
+                "\n - 发展: " + structure.getSecondPart() +
+                "\n - 高潮: " + structure.getThirdPart() +
+                "\n - 结局: " + structure.getFourthPart();
+    }
 
 }
