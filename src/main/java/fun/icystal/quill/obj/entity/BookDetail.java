@@ -13,4 +13,6 @@ public class BookDetail {
 
     private List<Character> characters;
 
+    private BookAbstract bookAbstract;
+
 }

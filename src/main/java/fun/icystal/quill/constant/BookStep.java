@@ -13,7 +13,11 @@ public enum BookStep {
 
     STRUCTURE( "structure",2, "结构"),
 
-    CHARACTER( "character",3, "人物"),
+    CHARACTER( "character",3, "人物简介"),
+
+    ABSTRACT( "abstract",4, "摘要"),
+
+    BIOGRAPHY("biography", 5, "人物小传")
     ;
 
     private final String code;

@@ -15,6 +15,6 @@ public @interface Comment {
 
     String desc();
 
-    String example() default "";
+    String prompt() default "";
 
 }
