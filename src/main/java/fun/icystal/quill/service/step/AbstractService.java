@@ -20,7 +20,8 @@ public class AbstractService implements GenerateHandler {
     private final CustomBeanOutputConverter<BookAbstract> converter;
 
     public AbstractService(ChatClient.Builder builder) {
-        this.chatClient = builder.build();
+        this.chatClient = builder
+                .build();
         this.converter = new CustomBeanOutputConverter<>(new ParameterizedTypeReference<BookAbstract>() {
         });
     }

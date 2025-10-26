@@ -25,4 +25,12 @@ public class BookAbstract {
     @Comment(desc = "故事的第四部分内容")
     private String fourthSection;
 
+    public String contentString() {
+        return "* 故事背景和主要人物: " + background + "\n" +
+                "* 第一部分: " + firstSection + "\n" +
+                "* 第二部分: " + secondSection + "\n" +
+                "* 第三部分: " + thirdSection + "\n" +
+                "* 第四部分: " + fourthSection + "\n";
+    }
+
 }

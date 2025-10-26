@@ -96,6 +96,8 @@ public class PromptFactory {
                  - 在故事结构的基础上, 结合人物形象, 为故事填充细节. 必须考虑主角如何解决面临的难题, 以及解决难题时的心理斗争.
                  - 禁止胡乱修改故事结构规定的发展方向
                  - 人物行动应该符合人物形象, 禁止设计不符合人物形象的情节
+                 - 五个段落应该描述一个连贯的故事, 故事的主要角色都必须出现.
+                 - 所有出现的角色都应该合理, 必须描述其身份和出现原因, 禁止生硬地将任务嵌入故事中.
                """;
     }
 
@@ -110,7 +112,7 @@ public class PromptFactory {
 
         sb.append("\n人物形象:\n");
         for (int i = 0; i < book.getBookDetail().getCharacters().size(); i++) {
-            sb.append(" 人物").append(i + 1).append("\n");
+            sb.append("** [人物").append(i + 1).append("]\n");
             sb.append(buildEntityPrompt(book.getBookDetail().getCharacters().get(i)));
         }
 
